@@ -1,0 +1,60 @@
+body{
+    text-align: center;
+}
+
+.board{
+    border: solid;
+    margin: auto;
+    display: block;
+    width: 40%;
+    
+
+}
+
+.btn{
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    margin: 20px ;
+}
+
+.score{
+    display: inline-block;
+    margin: 20px;
+    font-weight:bold;
+}
+
+div > p{
+    display: inline-block;
+    margin: 0 40px;
+}
+
+.level{
+    display: inline-block;
+    margin: 20px 50px;
+    font-weight:bold;
+    
+    
+}
+
+#red{
+    background-color: red;
+
+}
+
+#blue{
+    background-color: blue;
+}
+
+#yellow{
+    background-color: yellow;
+}
+
+#green{
+    background-color: green;
+}
+
+.active{
+    box-shadow: 0 0 20px;
+}
