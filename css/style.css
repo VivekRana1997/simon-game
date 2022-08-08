@@ -57,4 +57,10 @@ div > p{
 
 .active{
     box-shadow: 0 0 20px;
+    border: solid;
+}
+
+.game-over{
+    background-color: red;
+  opacity: 0.8;
 }
