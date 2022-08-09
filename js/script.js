@@ -13,6 +13,11 @@ let randomNum
 
 /*----- cached element references -----*/
 let playerEl = document.querySelectorAll(".btn")
+let yourScoreEl = document.getElementById("your-score")
+let highScoreEl = document.getElementById("high-score")
+let gameoverEl = document.querySelector(".game-over")
+let buttonEl = document.querySelector("button")
+
 
 
 /*----- event listeners -----*/
@@ -20,6 +25,8 @@ playerEl.forEach(function(e){
     e.addEventListener("click", getElement)
 })
 document.addEventListener("keypress", keyboard)
+
+buttonEl.addEventListener("click", reset)
 /*----- functions -----*/
 
 
@@ -70,12 +77,30 @@ function compareChoices(){
     if(playerSeq[playerSeq.length - 1] === computerSeq[playerSeq.length - 1]){
         if(playerSeq.length === computerSeq.length){
             setTimeout(function(){
+                yourScore = yourScore + 1
+                yourScoreEl.innerHTML = yourScore;
                 computerFn()
                 playerSeq = [];
                 
             },1000)
         }
     }else{
-        console.log("Game over")
+        if(yourScore >= highScore){
+            highScoreEl.innerHTML = yourScore
+            gameover();
+        
+        }
     }
+}
+
+function gameover(){
+     gameoverEl.classList.add("display")
+}
+
+function reset(){
+    gameoverEl.classList.remove("display")
+    yourScore = 0;
+    yourScoreEl.innerHTML = yourScore
+    computerSeq = []
+    playerSeq = []
 }
