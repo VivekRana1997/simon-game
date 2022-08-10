@@ -3,7 +3,7 @@ body{
 }
 
 .board{
-    border: solid;
+    /* border: solid; */
     margin: auto;
     display: block;
     width: 40%;
@@ -16,7 +16,7 @@ body{
     height: 200px;
     width: 200px;
     border-radius: 100%;
-    margin: 20px ;
+    margin: 5px ;
 }
 
 .score{
@@ -74,6 +74,7 @@ div > p{
   color: white;
   font-weight: bold;
   font-size: 40px;
+  
 }
 
 button{

@@ -17,6 +17,8 @@ let yourScoreEl = document.getElementById("your-score")
 let highScoreEl = document.getElementById("high-score")
 let gameoverEl = document.querySelector(".game-over")
 let buttonEl = document.querySelector("button")
+let startEl = document.querySelector("h2")
+let finalEl = document.getElementById("score")
 
 
 
@@ -24,7 +26,7 @@ let buttonEl = document.querySelector("button")
 playerEl.forEach(function(e){
     e.addEventListener("click", getElement)
 })
-document.addEventListener("keypress", keyboard)
+document.addEventListener("keypress", keyboard, {once : true})
 
 buttonEl.addEventListener("click", reset)
 /*----- functions -----*/
@@ -34,6 +36,7 @@ function computerFn(){
     randomNum = Math.floor(Math.random() * 4)
     computerSeq.push(color[randomNum])
     animation(color[randomNum])
+    sound(color[randomNum])
 }
 
 init()
@@ -55,6 +58,7 @@ function init() {
 function getElement(){
     playerChoice = this.getAttribute("id")
     playerSeq.push(playerChoice)
+    sound(playerChoice)
     animation(playerChoice);
     compareChoices();
 
@@ -85,16 +89,22 @@ function compareChoices(){
             },1000)
         }
     }else{
-        if(yourScore >= highScore){
-            highScoreEl.innerHTML = yourScore
-            gameover();
-        
+         sound("over")
+        if(yourScore>=highScore){
+            highScore = yourScore
+            highScoreEl.innerHTML = highScore
         }
+        gameover()
     }
 }
 
 function gameover(){
      gameoverEl.classList.add("display")
+     if(yourScore < highScore){
+        finalEl.innerHTML = yourScore
+     }else{
+        finalEl.innerHTML = `is the high score: ${highScore}`
+     }
 }
 
 function reset(){
@@ -103,4 +113,12 @@ function reset(){
     yourScoreEl.innerHTML = yourScore
     computerSeq = []
     playerSeq = []
+    setTimeout(computerFn, 700)
+    startEl.innerHTML = ""
+
+}
+
+function sound(color){
+    let audio = new Audio(`sounds/${color}.mp3`)
+    audio.play()
 }
