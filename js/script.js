@@ -6,38 +6,38 @@ let playerTurn;
 let yourScore;
 let highScore;
 let message;
-let playerSeq = [];
-let computerSeq = [];
+let playerSeq;
+let computerSeq
 let randomNum;
 let colorCode;
+let gameStart;
+let finish;
+let darkMode;
 
 /*----- cached element references -----*/
 let playerEl = document.querySelectorAll(".btn");
 let yourScoreEl = document.getElementById("your-score");
 let highScoreEl = document.getElementById("high-score");
 let gameoverEl = document.querySelector(".game-over");
-let buttonEl = document.querySelector("button");
+let buttonEl = document.getElementById("button");
 let startEl = document.querySelector("h2");
 let finalEl = document.getElementById("score");
+let button2El = document.getElementById("b2");
 
 /*----- event listeners -----*/
 playerEl.forEach(function (e) {
   e.addEventListener("click", getElement);
 });
 document.addEventListener("keypress", keyboard);
-// , {once : true})
 
 buttonEl.addEventListener("click", reset);
 
-// document.getElementById("button").addEventListener("keypress", function(e){
-//     if(document.keyCode === 13){
-//         reset();
-//     }
-// })
+button2El.addEventListener("click", modes);
 
-// document.addEventListener("keypress", presskey)
 
 /*----- functions -----*/
+
+init();
 
 function computerFn() {
   randomNum = Math.floor(Math.random() * 4);
@@ -46,18 +46,17 @@ function computerFn() {
   sound(color[randomNum]);
 }
 
-init();
-
 function init() {
-  computerTurn = 0;
-  playerChoice = 0;
+  computerSeq = [];
+  playerSeq = [];
+  playerChoice = "";
   yourScore = 0;
   highScore = 0;
-  message = "Press any key to start the game";
   randomNum = 0;
   colorCode = "";
-
-  //   render()
+  gameStart = false;
+  finish = false;
+  darkMode = true;
 }
 
 function getElement() {
@@ -78,8 +77,13 @@ function animation(color) {
 
 function keyboard(e) {
   if (e.keyCode === 13) {
-    computerFn();
+    if(gameStart === false){
+      computerFn();
+      gameStart = true;
+    }
+      
   } else {
+    if(finish === false)
     presskey(e);
   }
 }
@@ -88,7 +92,7 @@ function compareChoices() {
   if (playerSeq[playerSeq.length - 1] === computerSeq[playerSeq.length - 1]) {
     if (playerSeq.length === computerSeq.length) {
       setTimeout(function () {
-        yourScore = yourScore + 1;
+        yourScore++;
         yourScoreEl.innerHTML = yourScore;
         computerFn();
         playerSeq = [];
@@ -105,6 +109,7 @@ function compareChoices() {
 }
 
 function gameover() {
+  finish = true;
   gameoverEl.classList.add("display");
   if (yourScore < highScore) {
     finalEl.innerHTML = yourScore;
@@ -114,6 +119,7 @@ function gameover() {
 }
 
 function reset() {
+  finish = false;
   gameoverEl.classList.remove("display");
   yourScore = 0;
   yourScoreEl.innerHTML = yourScore;
@@ -121,6 +127,7 @@ function reset() {
   playerSeq = [];
   setTimeout(computerFn, 700);
   startEl.innerHTML = "";
+
 }
 
 function sound(color) {
@@ -149,4 +156,16 @@ function presskey(e) {
   sound(colorCode);
   animation(colorCode);
   compareChoices();
+}
+
+function modes(){
+  if(darkMode){
+    document.querySelector("body").classList.add("new")
+    button2El.innerHTML = "Light"
+    darkMode = false
+  }else{
+    document.querySelector("body").classList.remove("new")
+    button2El.innerHTML = "Dark"
+    darkMode = true
+  }
 }

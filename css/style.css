@@ -1,14 +1,12 @@
 body{
+    margin-top: 0;
     text-align: center;
 }
 
 .board{
-    /* border: solid; */
     margin: auto;
     display: block;
     width: 40%;
-    
-
 }
 
 .btn{
@@ -91,4 +89,22 @@ button:hover{
 
 .display{
     display: flex;
+}
+
+#high-score{
+    margin-left: 10px;
+}
+
+.new{
+    color:white;
+    background-color: rgb(37, 36, 36);
+    
+}
+
+#b2{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    font-size: 0.9rem;
+    border-radius: 30%;
 }

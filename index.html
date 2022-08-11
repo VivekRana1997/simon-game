@@ -1,43 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simon</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script defer src = "js/script.js"></script>
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/script.js"></script>
+  </head>
+  <body>
+    <button id="b2">Dark</button>
     <h1>Welcome to Simon</h1>
     <h2>Press ENTER to start the game</h2>
-    <div class = "board">
-        <div class="top-row">
-            <div id="red" class="btn"></div>
-            <div id="blue" class="btn"></div>
-        </div>
-        <div class="bottom-row">
-            <div id="yellow" class="btn"></div>
-            <div id="green" class="btn"></div>
-        </div>
+    <div class="board">
+      <div class="top-row">
+        <div id="red" class="btn"></div>
+        <div id="blue" class="btn"></div>
+      </div>
+      <div class="bottom-row">
+        <div id="yellow" class="btn"></div>
+        <div id="green" class="btn"></div>
+      </div>
     </div>
     <div class="score">
-        <p>Your score</p>
-        <p id="your-score">0</p>
-        <p>High score</p>
-        <p id="high-score">0</p>
-    </div>
-    <div>
-        <div class="level">Difficulty level</div>
-        <div class="level">Easy</div>
-        <div class="level">Normal</div>
-        <div class="level">Hard</div>
+      <p>Your score</p>
+      <p id="your-score">0</p>
+      <p>High score</p>
+      <p id="high-score">0</p>
     </div>
     <div class="game-over">
-        <div>Game Over</div>
-        <div>Your Score <span id="score"></span></div>
-        
-        <button id="button">Restart</button>
+      <div>Game Over</div>
+      <div>Your Score <span id="score"></span></div>
+
+      <button id="button">Restart</button>
     </div>
-</body>
+    
+    
+  </body>
 </html>
